@@ -10,20 +10,9 @@ public class Main {
         String docs = br.readLine();
         String word = br.readLine();
         
-        int startIndex = 0;
-        int answer = 0;
+        String replaced = docs.replace(word, "");
         
-        while (true) {
-            int findIndex = docs.indexOf(word, startIndex);
-            
-            if (findIndex < 0) {
-                break;
-            }
-            
-            answer++;
-            
-            startIndex = findIndex + word.length();
-        }
+        int answer = (docs.length() - replaced.length()) / word.length();
         
         System.out.println(answer);
     }
