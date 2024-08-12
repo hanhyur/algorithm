@@ -11,39 +11,34 @@ public class Main {
         int N = Integer.parseInt(size[0]);
         int M = Integer.parseInt(size[1]);
         
-        char[][] map = new char[N][M];
+        String[] arr = new String[N];
         
         for (int i = 0; i < N; i++) {
-            String row = br.readLine();
-            
-            map[i] = row.toCharArray();
+            arr[i] = br.readLine();
         }
         
-        boolean[] isPresentInRow = new boolean[N];
-        boolean[] isPresentInCol = new boolean[M];
+        int needRowCount = 0;
+        int needColCount = 0;
         
         for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++) {
-                if (map[i][j] == 'X') {
-                    isPresentInRow[i] = true;
-                    isPresentInCol[j] = true;
-                }
+            if (!arr[i].contains("X")) {
+                needRowCount++;
             }
         }
-        
-        int needRowCount = N;
-        
-        for (int i = 0; i < N; i++) {
-            if (isPresentInRow[i]) {
-                needRowCount--;
-            }
-        }
-        
-        int needColCount = M;
         
         for (int i = 0; i < M; i++) {
-            if (isPresentInCol[i]) {
-                needColCount--;
+            boolean need = true;
+            
+            for (int j = 0; j < N; j++) {
+                if (arr[j].charAt(i) == 'X') {
+                    need = false;
+                    
+                    break;
+                }
+            }
+            
+            if (need) {
+                needColCount++;
             }
         }
         
