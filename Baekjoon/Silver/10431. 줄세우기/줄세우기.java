@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class Main {
     
@@ -19,34 +20,24 @@ public class Main {
                 h[i] = Integer.parseInt(input[i + 1]);
             }
             
-            int move = 0;
             int[] sorted = new int[20];
+            int move = 0;
             
             for (int i = 0; i < 20; i++) {
-                boolean find = false;
+                int current = h[i];
+                int pos = Arrays.binarySearch(sorted, 0, i, current);
                 
-                for (int j = 0; j < i; j++) {
-                    if (sorted[j] > h[i]) {
-                        find = true;
-                        
-                        for (int k = i - 1; k >= j; k--) {
-                            sorted[k + 1] = sorted[k];
-                            move++;
-                        }
-                        
-                        sorted[j] = h[i];
-                        break;
-                    }
+                if (pos < 0) {
+                    pos = -pos - 1;
                 }
                 
-                if (!find) {
-                    sorted[i] = h[i];
-                }
+                move += i - pos;
+                
+                System.arraycopy(sorted, pos, sorted, pos + 1, i - pos);
+                sorted[pos] = current;
             }
             
             System.out.println(T + " " + move);
         }
-        
     }
-    
 }
