@@ -18,10 +18,20 @@ public class Main {
     /**
      * 10진수 N을 B 진법으로 바꿔서 출력
      */
-    static void func() {   
-        String answer = Integer.toString(n, b);
+    static void func() {
+        if (n == 0) {
+            System.out.println("0");
+        }
         
-        System.out.println(answer.toUpperCase());
+        char[] digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+        
+        while (n > 0) {
+            sb.append(digits[n % b]);
+            
+            n /= b;
+        }
+        
+        System.out.println(sb.reverse().toString());
     }
     
     public static void main(String[] args) throws IOException {
