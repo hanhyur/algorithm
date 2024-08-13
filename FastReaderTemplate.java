@@ -15,7 +15,7 @@ public class Main {
     }
     
     /**
-     * 전체 값에서 2명의 키를 제거 했을 때 100이 되면 된다.
+     * 
      */
     static void func() {
     
