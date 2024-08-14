@@ -19,6 +19,7 @@ public class Main {
         }
     }
     
+    // B 진법으로 변환
     public static List<Long> convertBase(Long num, int b) {
         List<Long> res = new ArrayList<>();
         
@@ -122,24 +123,6 @@ public class Main {
             }
             
             return str;
-        }
-    }
-    
-    static void insertionSort(int[] arr) {
-        for (int i = 1; i < arr.length; i++) {
-            for (int j = 0; j < i; j++) {
-                if (arr[j] > arr[i]) {
-                    int current = arr[i];
-                    
-                    for (int k = i; k > j; k--) {
-                        arr[k] = arr[k - 1];
-                    }
-                    
-                    arr[j] = current;
-                    
-                    break;
-                }
-            }
         }
     }
     
