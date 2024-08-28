@@ -1,67 +1,88 @@
-import java.util.*;
 import java.io.*;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
-public class Main{
-    static StringTokenizer st;
-    static int[] heapSort;
-    public static void main(String[] args) throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        st = new StringTokenizer(br.readLine());
-
-        int n = Integer.parseInt(st.nextToken());
-        heapSort = new int[n];
-
-        for(int i=0; i < n; i++){
-            st = new StringTokenizer(br.readLine());
-            int input = Integer.parseInt(st.nextToken());
-            heapSort[i] = input;
+public class Main {
+    static FastReader scan = new FastReader();
+    static StringBuilder sb = new StringBuilder();
+    
+    // 변수 정의
+    static int n;
+    static Integer[] arr;
+    
+    // 변수 값 입력 받음
+    static void input() {
+        n = scan.nextInt();
+        arr = new Integer[n];
+        
+        for (int i = 0; i < n; i++) {
+            arr[i] = scan.nextInt();
         }
-        buildMaxHeap();
-
-        for(int output: heapSort){
-            bw.write(String.valueOf(output));
-            bw.newLine();
-        }
-        bw.flush();
     }
-
-    public static void buildMaxHeap(){
-        if(heapSort == null || heapSort.length < 1){
-            return;
+    
+    static void func() {
+        Arrays.sort(arr);
+        
+        for (int i = 0; i < n; i++) {
+            sb.append(arr[i]).append("\n");
         }
         
-        for(int i = heapSort.length / 2; i >= 0; i--){
-            heapify(heapSort, i, heapSort.length);
+        System.out.println(sb.toString());
+    }
+    
+    public static void main(String[] args) throws IOException {
+        input();
+        
+        func();
+    }
+    
+    static class FastReader {
+        BufferedReader br;
+        StringTokenizer st;
+        
+        public FastReader() {
+            br = new BufferedReader(new InputStreamReader(System.in));
         }
-
-        for(int i = heapSort.length - 1; i >= 0; i--) {
-            int temp = 0;
-            temp = heapSort[0];
-            heapSort[0] = heapSort[i];
-            heapSort[i] = temp;
-            heapify(heapSort, 0, i);
+        
+        public FastReader(String s) throws FileNotFoundException {
+            br = new BufferedReader(new FileReader(new File(s)));
+        }
+        
+        String next() {
+            while (st == null || !st.hasMoreElements()) {
+                try {
+                    st = new StringTokenizer(br.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            
+            return st.nextToken();
+        }
+        
+        int nextInt() {
+            return Integer.parseInt(next());
+        }
+        
+        long nextLong() {
+            return Long.parseLong(next());
+        }
+        
+        double nextDouble() {
+            return Double.parseDouble(next());
+        }
+        
+        String nextLine() {
+            String str = "";
+            
+            try {
+                str = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            
+            return str;
         }
     }
-
-    public static void heapify(int[] unsorted, int index, int heapSize){
-        int largest = index;
-        int leftIndex = 2 * index + 1;
-        int rightIndex = 2 * index + 2;
-        int temp = 0;
-
-        if(leftIndex < heapSize && unsorted[leftIndex] > unsorted[largest]){
-            largest = leftIndex;
-        }
-        if(rightIndex < heapSize && unsorted[rightIndex] > unsorted[largest]){
-            largest = rightIndex;
-        }
-
-        if(largest != index){
-            temp = heapSort[largest];
-            heapSort[largest] = heapSort[index];
-            heapSort[index] = temp;
-            heapify(heapSort, largest, heapSize);
-        }
-    }
+    
 }
