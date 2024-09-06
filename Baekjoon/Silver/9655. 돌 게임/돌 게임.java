@@ -14,29 +14,7 @@ public class Main {
     }
     
     static void func() {
-        int turn = 1;
-        int remain = n;
-        
-        while (remain > 3) {
-            remain -= 3;
-            turn++;
-        }
-        
-        if (remain == 3 || remain == 1) {
-            if (turn % 2 == 0) {
-                sb.append("CY");
-            } else {
-                sb.append("SK");
-            }
-        }
-        
-        if (remain == 2) {
-            if (turn % 2 == 0) {
-                sb.append("SK");
-            } else {
-                sb.append("CY");
-            }
-        }
+        sb.append(n % 2 == 0 ? "CY" : "SK");
         
         System.out.println(sb.toString());
     }
