@@ -75,23 +75,5 @@ public class Main {
             return str;
         }
     }
-    
-    static void insertionSort(int[] arr) {
-        for (int i = 1; i < arr.length; i++) {
-            for (int j = 0; j < i; j++) {
-                if (arr[j] > arr[i]) {
-                    int current = arr[i];
-                    
-                    for (int k = i; k > j; k--) {
-                        arr[k] = arr[k - 1];
-                    }
-                    
-                    arr[j] = current;
-                    
-                    break;
-                }
-            }
-        }
-    }
-    
+
 }
