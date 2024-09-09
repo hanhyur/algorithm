@@ -59,31 +59,18 @@ public class Main {
     
     static void func() {
         for (String s : list) {
+            boolean isAcceptable = true;
+            
             if (s.length() == 1 && isVowel(s.charAt(0))) {
                 sb.append("<").append(s).append("> is acceptable.").append("\n");
-                
                 continue;
             }
             
-            if (!isContainsVowel(s)) {
-                sb.append("<").append(s).append("> is not acceptable.").append("\n");
-                
-                continue;
+            if (!isContainsVowel(s) || !isNotContinuous(s) || !isSpecificVowel(s)) {
+                isAcceptable = false;
             }
             
-            if (!isNotContinuous(s)) {
-                sb.append("<").append(s).append("> is not acceptable.").append("\n");
-                
-                continue;
-            }
-            
-            if (!isSpecificVowel(s)) {
-                sb.append("<").append(s).append("> is not acceptable.").append("\n");
-                
-                continue;
-            }
-            
-            sb.append("<").append(s).append("> is acceptable.").append("\n");
+            sb.append("<").append(s).append("> is ").append(isAcceptable ? "acceptable." : "not acceptable.").append("\n");
         }
         
         System.out.println(sb.toString());
