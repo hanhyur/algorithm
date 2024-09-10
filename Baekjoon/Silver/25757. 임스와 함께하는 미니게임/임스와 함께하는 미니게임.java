@@ -9,7 +9,7 @@ public class Main {
     // 변수 정의
     static int n;
     static String game;
-    static List<String> users = new ArrayList<>();
+    static Set<String> users = new HashSet<>();
     
     // 변수 값 입력 받음
     static void input() {
@@ -22,19 +22,18 @@ public class Main {
     }
     
     static void func() {
-        List<String> distinctList = users.stream().distinct().collect(Collectors.toList());
         int playCount = 0;
         
         if (game.equals("Y")) {
-            playCount = distinctList.size();
+            playCount = users.size();
         }
         
         if (game.equals("F")) {
-            playCount = distinctList.size() / 2;
+            playCount = users.size() / 2;
         }
         
         if (game.equals("O")) {
-            playCount = distinctList.size() / 3;
+            playCount = users.size() / 3;
         }
         
         sb.append(playCount).append("\n");
