@@ -5,8 +5,10 @@ class Solution {
         int max = 0;
 
         while (left < right) {
-            int current = Math.min(height[left], height[right]) * (right - left);
-            max = Math.max(max, current);
+            int width = right - left;
+            int h = Math.min(height[left], height[right]);
+
+            max = Math.max(max, width * h);
 
             if (height[left] < height[right]) {
                 left++;
