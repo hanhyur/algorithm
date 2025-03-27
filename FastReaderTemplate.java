@@ -5,18 +5,12 @@ public class Main {
     static FastReader scan = new FastReader();
     static StringBuilder sb = new StringBuilder();
     
-    // 변수 정의
     static int n;
-    static int[] arr;
     
-    // 변수 값 입력 받음
     static void input() {
         
     }
     
-    /**
-     * 
-     */
     static void func() {
     
     }
