@@ -24,14 +24,18 @@ class Solution {
             
             if (total1 < total2) {
                 int x = q2.getFirst();
+                
                 total1 += x;
                 total2 -= x;
+                
                 q1.add(x);
                 q2.removeFirst();
             } else {
                 int x = q1.getFirst();
+                
                 total2 += x;
                 total1 -= x;
+                
                 q2.add(x);
                 q1.removeFirst();
             }
