@@ -4,15 +4,13 @@
 using namespace std;
 
 bool solution(int x) {
-    int temp = x;
+    int tmp = x;
     int sum = 0;
         
-    while ((temp/10) != 0) {
-        sum += temp%10;
-        temp = temp/10;
+    while (tmp > 0) {
+        sum += tmp % 10;
+        tmp = tmp / 10;
     }
-        
-    sum += temp;
         
     if ((x % sum) != 0) {
         return false;
