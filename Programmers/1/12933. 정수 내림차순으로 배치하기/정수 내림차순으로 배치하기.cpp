@@ -8,18 +8,24 @@ long long solution(long long n) {
     long long answer = 0;
     
     string str = to_string(n);
-    vector<int> digits;
+    sort(str.begin(), str.end(), greater<char>());
+    answer = stoll(str);
+
+    return answer;
     
-    for (char c : str) {
-        digits.push_back(c - '0');
-    }
+//     string str = to_string(n);
+//     vector<int> digits;
     
-    sort(digits.begin(), digits.end(), greater<int>());
+//     for (char c : str) {
+//         digits.push_back(c - '0');
+//     }
     
-    for (int num : digits) {
-        answer += num;
-        answer *= 10;
-    }
+//     sort(digits.begin(), digits.end(), greater<int>());
     
-    return answer / 10;
+//     for (int num : digits) {
+//         answer += num;
+//         answer *= 10;
+//     }
+    
+//     return answer / 10;
 }
