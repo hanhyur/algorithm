@@ -4,13 +4,11 @@
 using namespace std;
 
 string solution(string phone_number) {
-    vector<char> vec(phone_number.begin(), phone_number.end());
-    
-    for (int i = 0; i < vec.size() - 4; i++) {
-        vec[i] = '*';
+    for (int i = 0; i < phone_number.size() - 4; i++) {
+        phone_number[i] = '*';
     }
     
-    string answer(vec.begin(), vec.end());
+    string answer(phone_number.begin(), phone_number.end());
     
     return answer;
 }
