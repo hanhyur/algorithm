@@ -4,10 +4,7 @@
 
 using namespace std;
 
-string solution(string s) {
-    string answer = "";
-    
+string solution(string s) {  
     sort(s.begin(), s.end(), greater<int>());
-    
     return s;
 }
