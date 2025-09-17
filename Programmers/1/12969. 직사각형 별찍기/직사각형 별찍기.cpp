@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -7,12 +8,12 @@ int main(void) {
     int b;
     cin >> a >> b;
     
+    string s;
+    
+    s.append(a, '*');
+    
     for (int i = 0; i < b; i++) {
-        for (int j = 0; j < a; j++) {
-            cout << "*";
-        }
-        
-        cout << '\n';
+        cout << s << '\n';
     }
     
     return 0;
