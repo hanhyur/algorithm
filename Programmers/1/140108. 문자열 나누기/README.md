@@ -1,10 +1,10 @@
 # [level 1] 문자열 나누기 - 140108 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/140108?language=java) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/140108?language=cpp) 
 
 ### 성능 요약
 
-메모리: 87.7 MB, 시간: 0.71 ms
+메모리: 3.66 MB, 시간: 0.03 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 10월 15일 09:21:30
+2025년 10월 15일 09:25:14
 
 ### 문제 설명
 
