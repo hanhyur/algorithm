@@ -2,56 +2,30 @@ import java.util.*;
 
 class Solution {
     public int solution(int bridge_length, int weight, int[] truck_weights) {        
-        Queue<Truck> waitQ = new LinkedList<>();
-        Queue<Truck> moveQ = new LinkedList<>();
-
-        for (int t : truck_weights) {
-          waitQ.offer(new Truck(t));
-        }
-
-        int answer = 0;
+        Queue<Integer> bridge = new LinkedList<>();
+        int time = 0;
         int curWeight = 0;
-
-        while (!waitQ.isEmpty() || !moveQ.isEmpty()) {
-          answer++;
-
-          if (moveQ.isEmpty()) {
-            Truck t = waitQ.poll();
-            curWeight += t.weight;
-            moveQ.offer(t);
-            continue;
-          }
-
-          for (Truck t : moveQ) {
-            t.moving();
-          }
-
-          if (moveQ.peek().move > bridge_length) {
-            Truck t = moveQ.poll();
-            curWeight -= t.weight;
-          }
-
-          if (!waitQ.isEmpty() && curWeight + waitQ.peek().weight <= weight) {
-            Truck t = waitQ.poll();
-            curWeight += t.weight;
-            moveQ.offer(t);
-          }
+        
+        for (int i = 0; i < bridge_length; i++) {
+            bridge.offer(0);
         }
-
-        return answer;
-    }
-    
-    class Truck {
-        int weight;
-        int move;
-
-        public Truck(int weight) {
-            this.weight = weight;
-            this.move = 1;
+        
+        int idx = 0;
+        
+        while (idx < truck_weights.length) {
+            time++;
+            
+            curWeight -= bridge.poll();
+            
+            if (curWeight + truck_weights[idx] <= weight) {
+                bridge.offer(truck_weights[idx]);
+                curWeight += truck_weights[idx];
+                idx++;
+            } else {
+                bridge.offer(0);
+            }
         }
-
-        public void moving() {
-            move++;
-        }
+        
+        return time + bridge_length;
     }
 }
